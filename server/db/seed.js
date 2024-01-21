@@ -31,7 +31,7 @@ async function destroyDatabase() {
 async function initiateDatabase() {
   await pool.query(
     `
-  CREATE TABLE IF NOT EXISTS users (
+  CREATE TABLE users (
     username VARCHAR(255) PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
@@ -48,12 +48,13 @@ async function initiateDatabase() {
 
   await pool.query(
     `
-CREATE TABLE IF NOT EXISTS shipments (
+CREATE TABLE shipments (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-  date VARCHAR(255),
+  date DATE,
+  secondary_date DATE,
   tracking VARCHAR(255),
   FOREIGN KEY (username) REFERENCES users(username)
 )
@@ -68,4 +69,8 @@ CREATE TABLE IF NOT EXISTS shipments (
   )
 }
 
-destroyDatabase().then(() => initiateDatabase())
+async function insertDemoUser() {
+  await pool.query(`INSERT INTO users(username, email, password) VALUES ($1, $2, $3);`, ['demo', 'demo@shiptrack.com', 'pw'])
+}
+
+insertDemoUser()

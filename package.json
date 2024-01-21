@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "seed": "node server/db/seed.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "client-run-dev": "vite serve client --config client/vite.config.js",
     "client-build": "vite build",

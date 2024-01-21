@@ -4,8 +4,9 @@ import "./NewShipmentForm.css"
 
 export function NewShipmentForm() {
   const [title, setTitle] = useState("")
-  const [date, setDate] = useState("")
-  // const [shipments, setShipments] = useState([])
+  const [date, setDate] = useState(new Date())
+  const [secondaryDate, setSecondaryDate] = useState(new Date())
+  const [toggleDateRange, setToggleDateRange] = useState(false)
 
   // TODO: validate input
   // const [formData, setFormData] = useState({
@@ -29,12 +30,20 @@ export function NewShipmentForm() {
       })
       
       const responseBody = await response.json()
+      
+      if (response.ok) {
+        location.reload()
+      } else {
+        console.err('Failed to fetch data: ', response.statusText)
+      }
       return responseBody
+    
     } catch (err) {
-      console.error(err.message)
+      console.error('Error fetching data: ', err.message)
     }
   }
 
+  // TODO: require title
   return (
     <div className="new-form">
       <form onSubmit={handleNewShipment}>
@@ -46,14 +55,21 @@ export function NewShipmentForm() {
           onChange={(e) => setTitle(e.target.value)}
         ></input>
         <label>shipping date(s)</label>
-        <input
-          type="text"
+        <div><input
+          type="date"
           name="dates"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         ></input>
+        {toggleDateRange && <> - <input
+          type="date"
+          name="dates"
+          value={secondaryDate}
+          onChange={(e) => setSecondaryDate(e.target.value)}
+        ></input></>}</div>
+        <button type="button" className="date-range" onClick={() => setToggleDateRange(!toggleDateRange)}>date range?</button>
         <center>
-          <button className="add-button">add shipment</button>
+          <button className="add-button" type="submit">add shipment</button>
         </center>
       </form>
     </div>

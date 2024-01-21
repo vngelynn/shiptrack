@@ -2,7 +2,18 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: row;
+
+  .page-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
 }
 
 .logo {
@@ -39,4 +50,63 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.shipment-container {
+  display: flex;
+
+  .shipment {
+    border: 1px solid white;
+    border-radius: 4px;
+    margin: 1em;
+    width: 400px;
+    text-align: left;
+
+    .shipment-header {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border-bottom: 1px solid white;
+      padding: 10px;
+
+      .shipment-head {
+        display: flex;
+        justify-content: space-between;
+        max-height: 16px;
+
+        .actions {
+          display: flex;
+          flex-direction: column;
+          z-index: 1;
+        }
+      }
+
+      .shipment-tracking {
+        font-size: 12px;
+      }
+      .shipment-tracking span:hover {
+        background-color: rgba(255,255,255, 0.1);
+      }
+    }
+
+    .shipment-title {
+      font-family: serif;
+      padding: 0 10px;
+    }
+  }
+  .trashcan {
+    background: transparent;
+    border: none !important;
+  }
+
+  .tracking-button {
+    background: transparent;
+    border: none !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+  }
+
+  .tracking-button:hover {
+    font-weight: bold;
+  }
 }
