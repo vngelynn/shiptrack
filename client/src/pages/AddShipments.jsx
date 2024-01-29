@@ -13,6 +13,7 @@ export function AddShipments() {
       {showManual && (<NewShipmentForm />)}
       <AddSection url={connect} text="Connect email or Amazon accounts" />
       </div>
+      <Typography type="info">Go to <a href="/shipments">My Shipments</a> to view shipments.</Typography>
     </>
   )
 }
