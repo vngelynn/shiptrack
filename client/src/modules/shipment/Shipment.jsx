@@ -84,7 +84,6 @@ export function Shipment({ shipment, deleteShipment }) {
         </div>
       </div>
       <Typography type="body">Estimated Shipping Date(s): </Typography>
-      {shipment.secondary_date && <br></br>}
       {shipment.date ? (
         <Typography type="body">{formatDateString(shipment.date)} </Typography>
       ) : (
@@ -98,7 +97,7 @@ export function Shipment({ shipment, deleteShipment }) {
       )}
       <div className="shipment-button-container">
         <div className="action-buttons">
-          <button>View/Edit</button>
+          <button>Edit</button>
           <button>Archive</button>
         </div>
         <button onClick={() => setShowModal(true)}>Delete</button>
