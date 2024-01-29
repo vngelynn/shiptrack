@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
 import { Typography } from "../../components/Typography"
-import recycle from "../../assets/recycle.png"
 
 // eslint-disable-next-line react/prop-types
 export function Shipment({ shipment, deleteShipment }) {
   const [editId, setEditId] = useState(null)
   const [updateData, setUpdateData] = useState({})
+  const [showModal, setShowModal] = useState(false)
 
   const saveUpdateShipment = async (id) => {
     try {
@@ -78,11 +78,9 @@ export function Shipment({ shipment, deleteShipment }) {
                 }
               />
             ) : shipment.tracking ? (
-              <Typography type="body">
-                Tracking Number: {shipment.tracking}
-              </Typography>
+              <Typography type="body">{shipment.tracking}</Typography>
             ) : (
-              <Typography type="body">Tracking Number: add tracking</Typography>
+              <Typography type="body">add tracking</Typography>
             )}
           </div>
         </div>
@@ -98,17 +96,21 @@ export function Shipment({ shipment, deleteShipment }) {
             - {formatDateString(shipment.secondary_date)}
           </Typography>
         )}
-        <div className="action-buttons">
-          <div className="safe-buttons">
+        <div className="shipment-button-container">
+          <div className="action-buttons">
             <button>View/Edit</button>
             <button>Archive</button>
           </div>
-          <button>Delete</button>
+          <button onClick={() => setShowModal(true)}>Delete</button>
         </div>
       </div>
-      <button className="trashcan" onClick={() => deleteShipment(shipment.id)}>
-        <img src={recycle} alt="delete" />
-      </button>
+      {showModal && <dialog className="delete-dialog">
+        Are you sure you want to delete {shipment.title}?{" "}
+        <div className="action-buttons">
+          <button onClick={() => deleteShipment(shipment.id)}>Yes</button>
+          <button onClick={() => setShowModal(false)}>No</button>
+        </div>
+      </dialog>}
     </div>
   )
 }
