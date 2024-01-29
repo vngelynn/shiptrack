@@ -12,7 +12,7 @@ router.post('/', addShipment, (req, res, next) => {
 })
 
 router.patch('/:id', updateShipment, (req, res, next) => {
- return 'hi'
+    return res.json({ shipments: res.locals.shipments })
 })
 
 router.delete('/:id', deleteShipment, (req, res, next) => {

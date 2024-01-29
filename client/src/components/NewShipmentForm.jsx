@@ -5,7 +5,7 @@ import "./NewShipmentForm.css"
 export function NewShipmentForm() {
   const [title, setTitle] = useState("")
   const [date, setDate] = useState(new Date())
-  const [secondaryDate, setSecondaryDate] = useState(new Date())
+  const [secondaryDate, setSecondaryDate] = useState(null)
   const [toggleDateRange, setToggleDateRange] = useState(false)
 
   // TODO: validate input
@@ -20,7 +20,7 @@ export function NewShipmentForm() {
   const handleNewShipment = async (e) => {
     e.preventDefault()
     try {
-      const body = { username, title, date }
+      const body = { username, title, date, secondary_date:secondaryDate }
       const response = await fetch("http://localhost:3000/api/shipment", {
         method: "POST",
         headers: {

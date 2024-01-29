@@ -4,6 +4,7 @@ export function Shipments() {
   const [shipments, setShipments] = useState([])
   const [editId, setEditId] = useState(null)
   const [updateData, setUpdateData] = useState({})
+
   useEffect(() => {
     getShipments()
   }, [])
@@ -31,17 +32,27 @@ export function Shipments() {
     }
   }
 
-  // const saveUpdateShipment = async (id) => {
-  //   try {
-  //     // eslint-disable-next-line no-unused-vars
-  //     const response = await fetch(`http://localhost:3000/api/shipment/${id}`, {
-  //       method: "PATCH",
-  //       body: JSON.stringify(updateData)
-  //     })
-  //   } catch (err) {
-  //     console.error('Error updating data: ', err.message)
-  //   }
-  // }
+  const saveUpdateShipment = async (id) => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const response = await fetch(`http://localhost:3000/api/shipment/${id}`, {
+        method: "PATCH",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData)
+      })
+
+      if (response.ok) {
+        setEditId(null)
+        setUpdateData({})
+      }
+      location.reload()
+    } catch (err) {
+      console.error('Error updating data: ', err.message)
+    }
+  }
 
   const formatDateString = (dateStr) => {
     let date = new Date(dateStr)
@@ -58,14 +69,14 @@ export function Shipments() {
                   <div className="shipment-head">
                     <div>
                       {formatDateString(shipment.date)}
-                      {shipment.secondaryDate &&
-                        ` - ${formatDateString(shipment.secondaryDate)}`}
+                      {shipment.secondary_date &&
+                        ` - ${formatDateString(shipment.secondary_date)}`}
                     </div>
                     {editId && (
                       <div className="actions">
                         <button
                           className="tracking-button"
-                          // onClick={saveUpdateShipment}
+                          onClick={() => saveUpdateShipment(shipment.id)}
                         >
                           save
                         </button>
