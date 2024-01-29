@@ -61,6 +61,8 @@
     margin: 1em;
     width: 400px;
     text-align: left;
+    background-color: #f3efee;
+    color: #000;
 
     .shipment-header {
       display: flex;
