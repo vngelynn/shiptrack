@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Shipment } from "../modules/shipment/Shipment"
+import { Typography } from "../components/Typography"
 import "../modules/shipment/Shipments.css"
 
 export function Shipments() {
@@ -33,16 +34,20 @@ export function Shipments() {
   }
 
   return (
-    <div>
-      {shipments.length
-        ? shipments.map((shipment) => (
-            <Shipment
-              key={shipment.id}
-              shipment={shipment}
-              deleteShipment={submitDeleteShipment}
-            />
-          ))
-        : "No Shipments on Record"}
-    </div>
+    <>
+      {" "}
+      <Typography type="page-title">My Shipments</Typography>
+      <div className="shipments-container">
+        {shipments.length
+          ? shipments.map((shipment) => (
+              <Shipment
+                key={shipment.id}
+                shipment={shipment}
+                deleteShipment={submitDeleteShipment}
+              />
+            ))
+          : "No Shipments on Record"}
+      </div>
+    </>
   )
 }

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
+import { Typography } from "../../components/Typography"
 import recycle from "../../assets/recycle.png"
 
 // eslint-disable-next-line react/prop-types
@@ -31,7 +32,9 @@ export function Shipment({ shipment, deleteShipment }) {
 
   const formatDateString = (dateStr) => {
     let date = new Date(dateStr)
-    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+    return `${(date.getMonth() + 1).toLocaleString('en-US', 
+    { minimumIntegerDigits: 2 })}/${(date.getDate()).toLocaleString('en-US', 
+    { minimumIntegerDigits: 2 })}/${date.getFullYear()}`
   }
 
   return (
@@ -39,11 +42,7 @@ export function Shipment({ shipment, deleteShipment }) {
       <div className="shipment">
         <div className="shipment-header">
           <div className="shipment-head">
-            <div>
-              {formatDateString(shipment.date)}
-              {shipment.secondary_date &&
-                ` - ${formatDateString(shipment.secondary_date)}`}
-            </div>
+            <Typography type="shipment-title">{shipment.title}</Typography>
             {editId && (
               <div className="actions">
                 <button
@@ -77,13 +76,14 @@ export function Shipment({ shipment, deleteShipment }) {
                 }
               />
             ) : shipment.tracking ? (
-              <span>{shipment.tracking}</span>
+              <Typography type="body">Tracking Number: {shipment.tracking}</Typography>
             ) : (
-              <span>add tracking</span>
+              <Typography type="body">Tracking Number: add tracking</Typography>
             )}
           </div>
         </div>
-        <p className="shipment-title">{shipment.title}</p>
+
+        {shipment.date && shipment.secondary_date && <Typography type="body">Estimated Shipping Dates: {formatDateString(shipment.date)} - {formatDateString(shipment.secondary_date)}</Typography>}
       </div>
       <button className="trashcan" onClick={() => deleteShipment(shipment.id)}>
         <img src={recycle} alt="delete" />

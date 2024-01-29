@@ -1,13 +1,30 @@
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
-  padding-top: 10px;
-}
-
 button {
   margin-top: 20px;
+}
+
+.new-form {
+  form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 23em;
+  }
+
+  input {
+    margin: 8px;
+    padding: 8px;
+    width: 22.5em;
+  }
+
+  input[type=date] {
+    width: 10em;
+  }
+
+  input[type=checkbox] {
+    width:10px;
+  }
+
+  label {
+    font-size: 12px;
+  }
 }

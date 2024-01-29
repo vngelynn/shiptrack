@@ -1,13 +1,13 @@
 const { pool } = require("../db/pool")
 
-async function createShipment(username, title, date, secondary_date) {
+async function createShipment(username, title, date, secondary_date, tracking) {
   const result = await pool.query(
     `
-      INSERT INTO shipments(username, title, date, secondary_date)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO shipments(username, title, date, secondary_date, tracking)
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING *;
     `,
-    [username, title, date, secondary_date]
+    [username, title, date, secondary_date, tracking]
   )
 
   return result.rows[0]

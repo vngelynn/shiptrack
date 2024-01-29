@@ -6,9 +6,9 @@ const {
 } = require("../models/shipmentModel")
 
 async function addShipment(req, res, next) {
-  const { username, title, date, secondary_date } = req.body
+  const { username, title, date, secondary_date, tracking } = req.body
 
-  const result = await createShipment(username, title, date, secondary_date)
+  const result = await createShipment(username, title, date, secondary_date, tracking)
   return next()
 }
 
