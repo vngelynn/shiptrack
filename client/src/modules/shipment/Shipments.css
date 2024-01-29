@@ -18,14 +18,20 @@
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2),
         0 1px 2px 0 rgba(0, 0, 0, 0.19);
       padding: 10px;
-      flex-basis: 0;
-      flex: 1 1 0px;
-      min-width: 325px;
+      /* flex-basis: 0;
+      flex: 1 1 0px; */
+      width: 350px;
 
       .action-buttons {
         display: flex;
-        gap: 15px;
+        justify-content: space-between;
+        
+        .safe-buttons {
+          display: flex;
+          gap: 15px;
+        }
       }
+
       .shipment-header {
         display: flex;
         flex-direction: column;
@@ -36,7 +42,7 @@
         .shipment-head {
           display: flex;
           justify-content: space-between;
-          max-height: 16px;
+          /* max-height: 16px; */
 
           .actions {
             display: flex;

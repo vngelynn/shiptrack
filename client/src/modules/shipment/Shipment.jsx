@@ -98,8 +98,13 @@ export function Shipment({ shipment, deleteShipment }) {
             - {formatDateString(shipment.secondary_date)}
           </Typography>
         )}
-        <div className="action-buttons"><button>View/Edit</button>
-        <button>Archive</button></div>
+        <div className="action-buttons">
+          <div className="safe-buttons">
+            <button>View/Edit</button>
+            <button>Archive</button>
+          </div>
+          <button>Delete</button>
+        </div>
       </div>
       <button className="trashcan" onClick={() => deleteShipment(shipment.id)}>
         <img src={recycle} alt="delete" />
