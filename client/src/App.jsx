@@ -1,24 +1,25 @@
-import pageLogo from "./assets/boat.png"
 import "./App.css"
+import { Home } from "./pages/Home"
 import { AddShipments } from "./pages/AddShipments"
-// import { NavBar } from "./components/NavBar"
+import { NavBar } from "./components/NavBar"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Shipments } from "./pages/Shipments"
 
 function App() {
   // eslint-disable-next-line no-unused-vars
 
   return (
-    <>
-      <div className="page">
-        {/* <NavBar /> */}
-        <div className="page-content">
-          <img src={pageLogo} width="150px" />
-          <h1>shiptrack</h1>
-          <AddShipments />
-          <Shipments />
-        </div>
+    <Router>
+      <NavBar />
+      <div className="page-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/add" element={<AddShipments />} />
+          <Route path="/shipments" element={<Shipments />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   )
 }
 
