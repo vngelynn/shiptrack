@@ -40,77 +40,78 @@ export function Shipment({ shipment, deleteShipment }) {
   }
 
   return (
-    <div className="shipment-container">
-      <div className="shipment">
-        <div className="shipment-header">
-          <div className="shipment-head">
-            <Typography type="shipment-title">{shipment.title}</Typography>
-            {editId && (
-              <div className="actions">
-                <button
-                  className="tracking-button"
-                  onClick={() => saveUpdateShipment(shipment.id)}
-                >
-                  save
-                </button>
-                <button
-                  className="tracking-button"
-                  onClick={() => setEditId(null)}
-                >
-                  cancel
-                </button>
-              </div>
-            )}
-          </div>
-          <div
-            onDoubleClick={() => setEditId(shipment.id)}
-            className="shipment-tracking"
-          >
-            {editId == shipment.id ? (
-              <input
-                type="text"
-                value={updateData.tracking}
-                onChange={(e) =>
-                  setUpdateData({
-                    ...updateData,
-                    tracking: e.target.value,
-                  })
-                }
-              />
-            ) : shipment.tracking ? (
-              <Typography type="body">{shipment.tracking}</Typography>
-            ) : (
-              <Typography type="body">add tracking</Typography>
-            )}
-          </div>
+    <div className="shipment">
+      <div className="shipment-header">
+        <div className="shipment-head">
+          <Typography type="shipment-title">{shipment.title}</Typography>
+          {editId && (
+            <div className="actions">
+              <button
+                className="tracking-button"
+                onClick={() => saveUpdateShipment(shipment.id)}
+              >
+                save
+              </button>
+              <button
+                className="tracking-button"
+                onClick={() => setEditId(null)}
+              >
+                cancel
+              </button>
+            </div>
+          )}
         </div>
-
-        {shipment.date && (
-          <Typography type="body">
-            Estimated Shipping Date(s): {formatDateString(shipment.date)}
-          </Typography>
-        )}
-
-        {shipment.secondary_date && (
-          <Typography type="body">
-            - {formatDateString(shipment.secondary_date)}
-          </Typography>
-        )}
-        <div className="shipment-button-container">
-          <div className="action-buttons">
-            <button>View/Edit</button>
-            <button>Archive</button>
-          </div>
-          <button onClick={() => setShowModal(true)}>Delete</button>
+        <div
+          onDoubleClick={() => setEditId(shipment.id)}
+          className="shipment-tracking"
+        >
+          {editId == shipment.id ? (
+            <input
+              type="text"
+              value={updateData.tracking}
+              onChange={(e) =>
+                setUpdateData({
+                  ...updateData,
+                  tracking: e.target.value,
+                })
+              }
+            />
+          ) : shipment.tracking ? (
+            <a href={shipment.tracking}>Track</a>
+          ) : (
+            <Typography type="body">add tracking</Typography>
+          )}
         </div>
       </div>
-      {showModal && <dialog className="delete-dialog">
-        Are you sure you want to delete {shipment.title}?{" "}
+      <Typography type="body">Estimated Shipping Date(s): </Typography>
+      {shipment.secondary_date && <br></br>}
+      {shipment.date ? (
+        <Typography type="body">{formatDateString(shipment.date)} </Typography>
+      ) : (
+        <Typography type="body">N/A</Typography>
+      )}
+
+      {shipment.secondary_date && (
+        <Typography type="body">
+          - {formatDateString(shipment.secondary_date)}
+        </Typography>
+      )}
+      <div className="shipment-button-container">
         <div className="action-buttons">
-          <button onClick={() => deleteShipment(shipment.id)}>Yes</button>
-          <button onClick={() => setShowModal(false)}>No</button>
+          <button>View/Edit</button>
+          <button>Archive</button>
         </div>
-      </dialog>}
+        <button onClick={() => setShowModal(true)}>Delete</button>
+      </div>
+      {showModal && (
+        <dialog className="delete-dialog">
+          Are you sure you want to delete {shipment.title}?{" "}
+          <div className="action-buttons">
+            <button onClick={() => deleteShipment(shipment.id)}>Yes</button>
+            <button onClick={() => setShowModal(false)}>No</button>
+          </div>
+        </dialog>
+      )}
     </div>
   )
 }
