@@ -32,9 +32,11 @@ export function Shipment({ shipment, deleteShipment }) {
 
   const formatDateString = (dateStr) => {
     let date = new Date(dateStr)
-    return `${(date.getMonth() + 1).toLocaleString('en-US', 
-    { minimumIntegerDigits: 2 })}/${(date.getDate()).toLocaleString('en-US', 
-    { minimumIntegerDigits: 2 })}/${date.getFullYear()}`
+    return `${(date.getMonth() + 1).toLocaleString("en-US", {
+      minimumIntegerDigits: 2,
+    })}/${date.getDate().toLocaleString("en-US", {
+      minimumIntegerDigits: 2,
+    })}/${date.getFullYear()}`
   }
 
   return (
@@ -76,14 +78,28 @@ export function Shipment({ shipment, deleteShipment }) {
                 }
               />
             ) : shipment.tracking ? (
-              <Typography type="body">Tracking Number: {shipment.tracking}</Typography>
+              <Typography type="body">
+                Tracking Number: {shipment.tracking}
+              </Typography>
             ) : (
               <Typography type="body">Tracking Number: add tracking</Typography>
             )}
           </div>
         </div>
 
-        {shipment.date && shipment.secondary_date && <Typography type="body">Estimated Shipping Dates: {formatDateString(shipment.date)} - {formatDateString(shipment.secondary_date)}</Typography>}
+        {shipment.date && (
+          <Typography type="body">
+            Estimated Shipping Date(s): {formatDateString(shipment.date)}
+          </Typography>
+        )}
+
+        {shipment.secondary_date && (
+          <Typography type="body">
+            - {formatDateString(shipment.secondary_date)}
+          </Typography>
+        )}
+        <div className="action-buttons"><button>View/Edit</button>
+        <button>Archive</button></div>
       </div>
       <button className="trashcan" onClick={() => deleteShipment(shipment.id)}>
         <img src={recycle} alt="delete" />
