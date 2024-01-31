@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { Typography } from "../../components/Typography"
 
+//TODO: add view IF you can use carrier API
 // eslint-disable-next-line react/prop-types
 export function Shipment({ shipment, deleteShipment }) {
   const [editId, setEditId] = useState(null)
