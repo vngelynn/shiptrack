@@ -1,8 +1,5 @@
-# React + Vite
+# Shiptrack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shiptrack is an application where users can keep track of shipments coming their way. When receiving packages from various sources, it may be difficult to remember what to expect and when to expect it. This application allows users to monitor all incoming shipments, whether it be pre-orders, prizes, gifts, or online purchases, with a clean and minimal user experience. 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application is currently a work in progress.
