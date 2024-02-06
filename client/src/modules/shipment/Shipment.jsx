@@ -78,13 +78,7 @@ export function Shipment({ shipment, deleteShipment }) {
               }
             />
           ) : shipment.tracking ? (
-            <a
-              href={shipment.tracking}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Track
-            </a>
+            <a href={shipment.tracking} target="_blank" rel="noreferrer noopener">Track</a>
           ) : (
             <Typography type="body">add tracking</Typography>
           )}
