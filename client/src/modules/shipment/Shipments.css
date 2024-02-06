@@ -4,14 +4,11 @@
   justify-content: center;
   padding: 20px;
 
-  .shipment-container {
-    display: flex;
-
     .shipment {
       border: 1px solid #e4dad3;
       border-radius: 4px;
       margin: 1em;
-      /* width: 400px; */
+      width: 400px;
       text-align: left;
       background-color: #f3efee;
       color: #000;
@@ -71,5 +68,5 @@
     .tracking-button:hover {
       font-weight: bold;
     }
-  }
+
 }

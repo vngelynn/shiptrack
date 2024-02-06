@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const bcrypt = require('bcrypt')
 const { pool } = require("./db/pool")
 
 const apiRouter = require('./routes/api')
