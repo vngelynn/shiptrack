@@ -15,7 +15,7 @@ export function NavBar() {
             <img src={userProfile} width="30px" />
           </li>
           <li>
-            <a href="/login">Log In</a> | <a href="/signup">Sign Up</a>
+            <a href="/login" className="user-action">Log In</a> | <a href="/signup" className="user-action">Sign Up</a>
           </li>
         </ul>
       </nav>

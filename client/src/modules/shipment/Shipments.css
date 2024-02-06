@@ -9,6 +9,21 @@
     gap: 10px;
   }
 
+  .action-button {
+    background-color: hsl(var(--hue), 100%, 41%);
+    border: 1px solid black;
+    border-radius: 2px;
+  }
+
+  .action-button:hover {
+    background-color: black;
+    border: 1px solid hsl(var(--hue), 100%, 41%);
+    border-radius: 2px;
+    color: #e4dad3;
+    cursor: pointer;
+    text-shadow: 0 0 5px #BCAEA5;
+  }
+
   .delete-dialog {
     display: flex;
     flex-direction: column;
@@ -57,10 +72,14 @@
 
       .shipment-tracking {
         font-size: 12px;
+        font-weight: 600;
+        color:#73675f;
       }
-      .shipment-tracking span:hover {
+
+      .shipment-tracking :hover {
         background-color: rgba(255, 255, 255, 0.1);
         letter-spacing: 0.5px;
+        color: #BCAEA5;
       }
     }
 

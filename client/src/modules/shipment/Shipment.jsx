@@ -78,7 +78,7 @@ export function Shipment({ shipment, deleteShipment }) {
               }
             />
           ) : shipment.tracking ? (
-            <a href={shipment.tracking} target="_blank" rel="noreferrer noopener">Track</a>
+            <a href={shipment.tracking} target="_blank" rel="noreferrer noopener" className="shipment-tracking">Track</a>
           ) : (
             <Typography type="body">add tracking</Typography>
           )}
@@ -98,10 +98,10 @@ export function Shipment({ shipment, deleteShipment }) {
       )}
       <div className="shipment-button-container">
         <div className="action-buttons">
-          <button>Edit</button>
-          <button>Archive</button>
+          <button className="action-button">Edit</button>
+          <button className="action-button">Archive</button>
         </div>
-        <button onClick={() => setShowModal(true)}>Delete</button>
+        <button onClick={() => setShowModal(true)} className="action-button">Delete</button>
       </div>
       {showModal && (
         <dialog className="delete-dialog">
