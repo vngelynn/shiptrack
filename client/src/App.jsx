@@ -6,6 +6,7 @@ import { Login } from "./pages/Login"
 import { NavBar } from "./components/NavBar"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Shipments } from "./pages/Shipments"
+import { Shipment } from "./pages/Shipment"
 
 function App() {
   // eslint-disable-next-line no-unused-vars
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/add" element={<AddShipments />} />
           <Route path="/shipments" element={<Shipments />} />
+          <Route path="/shipment" element={<Shipment />} />
         </Routes>
       </div>
     </Router>

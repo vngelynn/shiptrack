@@ -3,12 +3,14 @@
   line-height: 1.5;
   font-weight: 400;
   color: #000;
-  background-color: #ebe6e2;
-
+  /* background-color: #ebe6e2; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height:100%;
+  background-image: linear-gradient(to bottom right, #ebe6e2, #c1b1a9);
+  background-attachment: fixed;
 }
 
 body {
