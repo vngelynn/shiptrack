@@ -4,7 +4,7 @@ import { Typography } from "../../components/Typography"
 
 //TODO: add view IF you can use carrier API
 // eslint-disable-next-line react/prop-types
-export function Shipment({ shipment, deleteShipment }) {
+export function ShipmentCard({ shipment, deleteShipment }) {
   const [editId, setEditId] = useState(null)
   const [updateData, setUpdateData] = useState({})
   const [showModal, setShowModal] = useState(false)
@@ -98,7 +98,7 @@ export function Shipment({ shipment, deleteShipment }) {
       )}
       <div className="shipment-button-container">
         <div className="action-buttons">
-          <button className="action-button">Edit</button>
+          <button className="action-button" onClick={() => location.href='/shipment'}>View/Edit</button>
           <button className="action-button">Archive</button>
         </div>
         <button onClick={() => setShowModal(true)} className="action-button">Delete</button>

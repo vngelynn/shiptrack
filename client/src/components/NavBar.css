@@ -36,6 +36,14 @@
       font-size: 14px;
       font-weight: 500;
     }
+
+    a:hover {
+      font-weight: 700;
+    }
+
+    a:focus {
+      text-shadow: 0 0 5px #bcaea5;
+    }
   }
   .user-action:hover {
     color: black;
