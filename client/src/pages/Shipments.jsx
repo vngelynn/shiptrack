@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Shipment } from "../modules/shipment/Shipment"
+import { ShipmentCard } from "../modules/shipment/ShipmentCard"
 import { Typography } from "../components/Typography"
 import "../modules/shipment/Shipments.css"
 
@@ -40,7 +40,7 @@ export function Shipments() {
       <div className="shipments-container">
         {shipments.length
           ? shipments.map((shipment) => (
-              <Shipment
+              <ShipmentCard
                 key={shipment.id}
                 shipment={shipment}
                 deleteShipment={submitDeleteShipment}

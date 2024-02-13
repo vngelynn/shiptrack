@@ -1,7 +1,11 @@
 .add-section-container {
-    padding-left: 50px;
-    padding-bottom: 30px;
-    .add-section {
-        padding: 30px 0 0 0px;
-     }
+  padding-left: 50px;
+  padding-bottom: 30px;
+  .add-section {
+    padding: 30px 0 0 0px;
+  }
+  .add-section:hover {
+    padding: 30px 0 0 0px;
+    cursor: pointer;
+  }
 }

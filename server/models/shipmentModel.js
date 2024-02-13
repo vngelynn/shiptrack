@@ -26,13 +26,26 @@ async function readShipments(username) {
   return result.rows
 }
 
-async function updateShipment(id, tracking) {
+async function readShipment(id) {
   const result = await pool.query(`
+    SELECT *
+    FROM shipments
+    WHERE id = $1;
+  `, [id])
+
+  return result.rows[0];
+}
+
+async function updateShipment(id, tracking) {
+  const result = await pool.query(
+    `
   UPDATE shipments
   SET tracking = $2
   WHERE id = $1
   RETURNING *;
-  `, [id, tracking])
+  `,
+    [id, tracking]
+  )
 
   return result.rows[0]
 }
@@ -44,8 +57,14 @@ async function deleteShipment(id) {
 `,
     [id]
   )
-  
+
   return result.rows
 }
 
-module.exports = { createShipment, readShipments, deleteShipment, updateShipment }
+module.exports = {
+  createShipment,
+  readShipments,
+  readShipment,
+  deleteShipment,
+  updateShipment,
+}

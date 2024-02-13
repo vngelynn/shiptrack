@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
 import { Typography } from "../../components/Typography"
+import { useNavigate } from "react-router-dom"
 
 //TODO: add view IF you can use carrier API
 // eslint-disable-next-line react/prop-types
-export function Shipment({ shipment, deleteShipment }) {
+export function ShipmentCard({ shipment, deleteShipment }) {
   const [editId, setEditId] = useState(null)
   const [updateData, setUpdateData] = useState({})
   const [showModal, setShowModal] = useState(false)
+  const navigate = useNavigate()
 
   const saveUpdateShipment = async (id) => {
     try {
@@ -78,12 +80,21 @@ export function Shipment({ shipment, deleteShipment }) {
               }
             />
           ) : shipment.tracking ? (
-            <a href={shipment.tracking} target="_blank" rel="noreferrer noopener">Track</a>
+            <a href={shipment.tracking} target="_blank" rel="noreferrer noopener" className="shipment-tracking">Track</a>
           ) : (
             <Typography type="body">add tracking</Typography>
           )}
         </div>
       </div>
+      {showModal && (
+        <dialog className="delete-dialog">
+          Are you sure you want to delete {shipment.title}?{" "}
+          <div className="action-buttons">
+            <button onClick={() => deleteShipment(shipment.id)}>Yes</button>
+            <button onClick={() => setShowModal(false)}>No</button>
+          </div>
+        </dialog>
+      )}
       <Typography type="body">Estimated Shipping Date(s): </Typography>
       {shipment.date ? (
         <Typography type="body">{formatDateString(shipment.date)} </Typography>
@@ -98,20 +109,11 @@ export function Shipment({ shipment, deleteShipment }) {
       )}
       <div className="shipment-button-container">
         <div className="action-buttons">
-          <button>Edit</button>
-          <button>Archive</button>
+          <button className="action-button" onClick={() => navigate(`/shipment/${shipment.id}`)}>View/Edit</button>
+          <button className="action-button">Archive</button>
         </div>
-        <button onClick={() => setShowModal(true)}>Delete</button>
+        <button onClick={() => setShowModal(true)} className="action-button">Delete</button>
       </div>
-      {showModal && (
-        <dialog className="delete-dialog">
-          Are you sure you want to delete {shipment.title}?{" "}
-          <div className="action-buttons">
-            <button onClick={() => deleteShipment(shipment.id)}>Yes</button>
-            <button onClick={() => setShowModal(false)}>No</button>
-          </div>
-        </dialog>
-      )}
     </div>
   )
 }

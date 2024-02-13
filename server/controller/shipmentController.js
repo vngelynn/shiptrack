@@ -1,6 +1,7 @@
 const {
   createShipment,
   readShipments,
+  readShipment,
   deleteShipment: dbDeleteShipment,
   updateShipment: dbUpdateShipment,
 } = require("../models/shipmentModel")
@@ -27,6 +28,13 @@ async function updateShipment(req, res, next) {
   return next()
 }
 
+async function getShipment(req, res, next) {
+  const { id } = req.params
+  const result = await readShipment(id)
+  res.locals.shipment = result
+  return next()
+}
+
 async function getShipments(req, res, next) {
   const { username } = req.body
   const shipments = await readShipments(username)
@@ -43,4 +51,4 @@ async function getShipments(req, res, next) {
   return next()
 }
 
-module.exports = { addShipment, getShipments, deleteShipment, updateShipment }
+module.exports = { addShipment, getShipments, deleteShipment, updateShipment, getShipment, }

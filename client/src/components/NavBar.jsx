@@ -4,7 +4,7 @@ import userProfile from "../assets/user-profile.png"
 import "./NavBar.css"
 export function NavBar() {
   return (
-    <>
+    <div className="nav-container">
       <nav className="nav">
         <a href="/" className="logo">
           <img src={pageLogo} width="50px" />
@@ -15,7 +15,7 @@ export function NavBar() {
             <img src={userProfile} width="30px" />
           </li>
           <li>
-            <a href="/login">Log In</a> | <a href="/signup">Sign Up</a>
+            <a href="/login" className="user-action">Log In</a> | <a href="/signup" className="user-action">Sign Up</a>
           </li>
         </ul>
       </nav>
@@ -32,6 +32,6 @@ export function NavBar() {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   )
 }
