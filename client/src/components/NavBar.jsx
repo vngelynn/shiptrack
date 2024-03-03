@@ -1,4 +1,5 @@
 // import React from "react"
+import { Typography } from "../components/Typography"
 import pageLogo from "../assets/boat.png"
 import userProfile from "../assets/user-profile.png"
 import "./NavBar.css"
@@ -8,7 +9,7 @@ export function NavBar() {
       <nav className="nav">
         <a href="/" className="logo">
           <img src={pageLogo} width="50px" />
-          shiptrack
+          <Typography type="logo-text">shiptrack</Typography>
         </a>
         <ul>
           <li>

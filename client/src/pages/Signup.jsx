@@ -1,3 +1,4 @@
+import { SignUpForm } from "../modules/auth/SignUpForm"
 export function Signup() {
-    return(<div>this is signup</div>)
+    return(<div><SignUpForm /></div>)
 }
