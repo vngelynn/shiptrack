@@ -16,3 +16,9 @@
   font-size: 1.2em;
   line-height: 1em;
 }
+
+.logo-text {
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
