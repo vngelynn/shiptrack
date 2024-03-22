@@ -1,6 +1,7 @@
 import { Typography } from "../components/Typography"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+
 export function Shipment() {
   const { id } = useParams()
   const [shipmentData, setShipmentData] = useState({})

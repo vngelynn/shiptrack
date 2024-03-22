@@ -1,26 +1,37 @@
 import { useState } from "react"
-import { Typography } from "../../components/Typography"
-import { auth } from "../../firebase"
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { useAuth } from "../../context/AuthContext"
 
 export function SignUpForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  const { signup } = useAuth()
 
-  const handleSignUp = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault()
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log("userCredential: ", userCredential)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+
+    if (password !== confirmPassword) {
+      return setError('Passwords do not match')
+    }
+
+    try {
+      setError("")
+      setLoading(true)
+      await signup(email, password)
+    } catch (error) {
+      setError("Failed to create an account.")
+      console.log("Failed to create an account: ", error)
+    }
+    setLoading(false)
   }
-  
+
+
   return (
-    <form onSubmit={handleSignUp}>
-      <div>
+    <form onSubmit={handleSubmit}>
+      {error && error}
+      <div className="input-container">
         <label htmlFor="email">Email</label>
         <input
           type="text"
@@ -30,7 +41,7 @@ export function SignUpForm() {
           placeholder="Enter your email"
         />
       </div>
-      <div>
+      <div className="input-container">
         <label htmlFor="email">Password</label>
         <input
           type="password"
@@ -40,9 +51,21 @@ export function SignUpForm() {
           placeholder="********"
         />
       </div>
-      <button type="submit">Sign up</button>
-      <button>Sign Up with Google</button>
-      <Typography type="body">Already have an account? Sign up</Typography>
+      <div className="input-container">
+        <label htmlFor="email">Confirm Password</label>
+        <input
+          type="password"
+          id="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="********"
+        />
+      </div>
+      <div className="auth-buttons">
+        <button disabled={loading} type="submit">Sign up</button>
+        <center>or</center>
+        <button>Sign Up with Google</button>
+      </div>
     </form>
   )
 }
