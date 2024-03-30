@@ -1,0 +1,53 @@
+.auth-container {
+    border: 1px solid #e4dad3;
+    border-radius: 4px;
+    background-color: #f3efee;
+    color: #000;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+    padding: 30px 50px;
+    margin: auto;
+    width: 50%;
+    font-family: serif;
+    max-width: 375px;
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 20px;
+        font-size: 17px;
+      
+        input {
+          border: 1px solid grey;
+          padding: 8px;
+        }
+      }
+      
+      .auth-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .login-action {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        align-items: center;
+      }
+      
+      .forgot-button {
+        background: transparent;
+        border: none !important;
+        font-family: serif;
+        color: black;
+      }
+      
+      .auth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0px 40px 0px;
+      }
+      
+}

@@ -30,7 +30,7 @@ export function AuthInfo() {
     <div>
       {authUser ? (
         <>
-          Signed In as ${authUser.email}
+          Signed In as {authUser.email}
           <button onClick={handleSignOut}>Sign Out</button>{" "}
         </>
       ) : (

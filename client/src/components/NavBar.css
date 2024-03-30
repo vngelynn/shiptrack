@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-image: linear-gradient(to bottom right, #ebe6e2, #c1b1a9);
+  background-color: #fff;
   
   .nav {
     display: flex;

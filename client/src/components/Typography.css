@@ -8,7 +8,11 @@
 }
 
 .body {
-  font-size: 13px;
+  font-size: 14px;
+}
+
+.secondary-text {
+  color: grey;
 }
 
 .shipment-title {
@@ -21,4 +25,10 @@
   letter-spacing: 3px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.header-1-italicize {
+  font-family: serif;
+  font-size: 1.5em;
+  font-style: italic
 }

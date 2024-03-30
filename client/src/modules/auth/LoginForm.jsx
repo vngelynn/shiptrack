@@ -1,25 +1,32 @@
 import { useState } from "react"
-import { Typography } from "../../components/Typography"
-import { auth } from "../../firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { useAuth } from "../../context/AuthContext"
+import { useNavigate } from 'react-router-dom'
 
 export function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
-  const handleSignIn = (e) => {
+  async function handleSignIn (e) {
     e.preventDefault()
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log("userCredential: ", userCredential)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    
+    try {
+      setError('')
+      setLoading(true)
+      await login(email, password)
+      navigate('/shipments')
+    } catch (error) {
+        setError('Failed to log in.')
+        console.log('Failed to log in: ', error)
+    }
   }
   return (
     <form onSubmit={handleSignIn}>
-      <div>
+      {error && error}
+      <div className="input-container">
         <label htmlFor="email">Email</label>
         <input
           type="text"
@@ -29,7 +36,7 @@ export function LoginForm() {
           placeholder="Enter your email"
         />
       </div>
-      <div>
+      <div className="input-container">
         <label htmlFor="email">Password</label>
         <input
           type="password"
@@ -39,15 +46,20 @@ export function LoginForm() {
           placeholder="********"
         />
       </div>
-      <div>
-        <input type="checkbox" id="remember-user" />
-        <label htmlFor="remember-user">Remember Me</label>
-        <input type="checkbox" id="forgot-password" />
-        <label htmlFor="forgot-password">Forgot Password</label>
+      <div className="login-action">
+        <div>
+          <input type="checkbox" id="remember-user" />
+          <label htmlFor="remember-user">Remember Me</label>
+        </div>
+        <div>
+          <button className="forgot-button">Forgot Password</button>
+        </div>
       </div>
-      <button type="submit">Log In</button>
-      <button>Log In with Google</button>
-      <Typography type="body">{`Don't have an account? `}Sign up</Typography>
+      <div className="auth-buttons">
+        <button type="submit" disabled={loading}>Log In</button>
+        <center>or</center>
+        <button>Log In with Google</button>
+      </div>
     </form>
   )
 }
