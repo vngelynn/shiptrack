@@ -38,10 +38,13 @@ button {
   color: #f3efee;
   font-family: serif;
   padding: .6em;
+  border: 2px solid #000;
 }
 
 button:hover {
   cursor: pointer;
+  background-color: #fff;
+  color: #000;
 }
 
 input:focus {

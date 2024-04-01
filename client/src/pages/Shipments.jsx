@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { ShipmentCard } from "../modules/shipment/ShipmentCard"
 import { Typography } from "../components/Typography"
 import "../modules/shipment/Shipments.css"
-import { AuthInfo } from '../modules/AuthInfo'
 
 export function Shipments() {
   const [shipments, setShipments] = useState([])
@@ -49,7 +48,6 @@ export function Shipments() {
             ))
           : "No Shipments on Record"}
       </div>
-      <AuthInfo />
     </>
   )
 }
