@@ -6,7 +6,7 @@ export function Login() {
   return (
     <div className="auth-container">
       <div className="auth-header">
-        <Typography type="header-1-italicize">Log In</Typography>
+        <Typography type="form-header-italicize">Login</Typography>
         <Typography type="secondary-text">
           Get back on track with your shipments
         </Typography>

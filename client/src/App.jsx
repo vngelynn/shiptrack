@@ -1,5 +1,5 @@
 import "./App.css"
-import { Home } from "./pages/Home"
+import { LandingPage } from "./pages/LandingPage"
 import { AddShipments } from "./pages/AddShipments"
 import { Signup } from "./pages/Signup"
 import { Login } from "./pages/Login"
@@ -18,7 +18,7 @@ function App() {
         <NavBar />
         <div className="page-content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/add" element={<AddShipments />} />

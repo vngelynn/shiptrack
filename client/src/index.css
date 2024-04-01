@@ -37,8 +37,7 @@ button {
   background-color: black;
   color: #f3efee;
   font-family: serif;
-  font-size: .9em;
-  padding: 8px;
+  padding: .6em;
 }
 
 button:hover {
@@ -48,4 +47,13 @@ button:hover {
 input:focus {
   outline: none !important;
   box-shadow: 0 0 10px #b0a59d;
+}
+
+p {
+  font-family: serif;
+  font-size: 17px;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
 }

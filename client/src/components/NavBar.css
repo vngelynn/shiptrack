@@ -3,6 +3,7 @@
   top: 0;
   width: 100%;
   background-color: #fff;
+  color: #fff;
   
   .nav {
     display: flex;
@@ -16,9 +17,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      /* letter-spacing: 3px;
-      font-weight: 700;
-      text-transform: uppercase; */
       top: 0;
     }
 
@@ -43,6 +41,22 @@
 
     a:focus {
       text-shadow: 0 0 5px #bcaea5;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .user-nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    
+      .nav-profile-buttons {
+        display: flex;
+        align-self: center
+      }
     }
   }
   .user-action:hover {
