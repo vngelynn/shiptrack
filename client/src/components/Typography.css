@@ -11,6 +11,11 @@
   font-size: 14px;
 }
 
+.alert {
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+}
+
 .secondary-text {
   color: grey;
 }
@@ -22,13 +27,32 @@
 }
 
 .logo-text {
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 3px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.header-1-italicize {
+.form-header-italicize {
   font-family: serif;
   font-size: 1.5em;
   font-style: italic
+}
+
+.page-header {
+  font-size: 2em;
+  font-weight: bold;
+  font-family: serif;
+}
+
+.page-description {
+  font-size: 16px;
+}
+
+.h3 {
+  font-size: 23px;
+}
+
+.h1 {
+  font-size: 3em;
 }

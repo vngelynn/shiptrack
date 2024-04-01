@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useAuth } from "../../context/AuthContext"
+import { useNavigate } from 'react-router-dom'
 
 export function SignUpForm() {
   const [email, setEmail] = useState("")
@@ -8,6 +9,7 @@ export function SignUpForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const { signup } = useAuth()
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -20,6 +22,7 @@ export function SignUpForm() {
       setError("")
       setLoading(true)
       await signup(email, password)
+      navigate('/add')
     } catch (error) {
       setError("Failed to create an account.")
       console.log("Failed to create an account: ", error)

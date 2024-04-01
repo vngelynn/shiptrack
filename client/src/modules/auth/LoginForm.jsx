@@ -22,6 +22,7 @@ export function LoginForm() {
         setError('Failed to log in.')
         console.log('Failed to log in: ', error)
     }
+    setLoading(false)
   }
   return (
     <form onSubmit={handleSignIn}>
@@ -56,9 +57,9 @@ export function LoginForm() {
         </div>
       </div>
       <div className="auth-buttons">
-        <button type="submit" disabled={loading}>Log In</button>
+        <button type="submit" disabled={loading}>Login</button>
         <center>or</center>
-        <button>Log In with Google</button>
+        <button>Login with Google</button>
       </div>
     </form>
   )
